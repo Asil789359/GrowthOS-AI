@@ -3,7 +3,10 @@ from sqlalchemy.orm import Session
 from database import get_db
 from services.payment import payment_service
 from pydantic import BaseModel
-from models import models
+from models.models import Payment
+
+
+
 
 router = APIRouter(prefix="/api/v1/payments", tags=["Payments"])
 
@@ -26,7 +29,7 @@ async def create_order(request: CreateOrderRequest, db: Session = Depends(get_db
         razor_order = payment_service.create_order(amount_paisa)
         
         # Save order to DB
-        db_payment = models.Payment(
+        db_payment = Payment(
             user_id=1,
             amount=request.amount,
             razorpay_order_id=razor_order['id'],
@@ -49,8 +52,8 @@ async def verify_payment(request: VerifyPaymentRequest, db: Session = Depends(ge
     
     if is_valid:
         # Update payment status in DB
-        payment = db.query(models.Payment).filter(
-            models.Payment.razorpay_order_id == request.razorpay_order_id
+        payment = db.query(Payment).filter(
+            Payment.razorpay_order_id == request.razorpay_order_id
         ).first()
         
         if payment:

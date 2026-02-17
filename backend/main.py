@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from routers import content, payment, stats
+import routers
+
 
 from database import engine, Base
 
@@ -29,9 +30,10 @@ app.add_middleware(
 )
 
 # Include Routers
-app.include_router(content.router)
-app.include_router(payment.router)
-app.include_router(stats.router)
+app.include_router(routers.content_router)
+app.include_router(routers.payment_router)
+app.include_router(routers.stats_router)
+
 
 
 
@@ -49,6 +51,7 @@ async def health_check():
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8008)
+    uvicorn.run(app, host="0.0.0.0", port=8080)
+
 
 
