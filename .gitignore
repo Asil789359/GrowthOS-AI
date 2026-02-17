@@ -1,0 +1,33 @@
+# Dependencies
+node_modules/
+backend/venv/
+.venv/
+env/
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Next.js
+.next/
+out/
+
+# Production
+build/
+
+# IDEs and Editors
+.visualstudio/
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Environment Variables (CRITICAL)
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# OS Files
+.DS_Store
+Thumbs.db
