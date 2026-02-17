@@ -34,6 +34,9 @@ export default function Navbar() {
 
                 {/* Desktop Menu */}
                 <div className="hidden md:flex items-center space-x-8">
+                    <Link href="/" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">
+                        Home
+                    </Link>
                     {["Features", "Pricing"].map((item) => (
                         <Link
                             key={item}
@@ -74,6 +77,13 @@ export default function Navbar() {
                     animate={{ opacity: 1, y: 0 }}
                     className="md:hidden absolute top-full left-0 right-0 glass-dark py-6 px-6 space-y-4"
                 >
+                    <Link
+                        href="/"
+                        className="block text-lg font-medium text-slate-300"
+                        onClick={() => setMobileMenuOpen(false)}
+                    >
+                        Home
+                    </Link>
                     {["Features", "Pricing"].map((item) => (
                         <Link
                             key={item}
@@ -91,6 +101,7 @@ export default function Navbar() {
                     >
                         Dashboard
                     </Link>
+
 
                     <Link
                         href="/dashboard"
